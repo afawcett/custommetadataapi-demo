@@ -1,5 +1,5 @@
 <apex:page controller="CustomMetadataDemoController" showHeader="true" sidebar="true" action="{!init}">
-    <apex:includeScript value="{!$Resource.cometd}/cometd.js"/>
+    <apex:includeScript value="{!$Resource.cmds__cometd}/cometd.js"/>
     <script type="text/javascript">
         var cometd = new window.org.cometd.CometD();
         cometd.configure({
@@ -9,8 +9,8 @@
         });
         cometd.handshake(function(status) {
             if (status.successful) {
-                cometd.subscribe('/event/MetadataDeployment__e', function(message) {
-                    if(message.data.payload.DeploymentId__c == window.deployId) {
+                cometd.subscribe('/event/cmds__MetadataDeployment__e', function(message) {
+                    if(message.data.payload.cmds__DeploymentId__c == window.deployId) {
                         saveHandler(message.data.payload.Result__c.replace('[', '').replace(']',''));
                     }
                 });

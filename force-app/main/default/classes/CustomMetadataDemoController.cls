@@ -18,11 +18,11 @@ public with sharing class CustomMetadataDemoController {
     public PageReference save() {
                         
         DeployId = 
-            CustomMetadata.Operations
+            cmds.CustomMetadata.Operations
                 .callback(
-                    MetadataDeployment__e.getSObjectType(),
-                    MetadataDeployment__e.DeploymentId__c, 
-                    MetadataDeployment__e.Result__c)
+                    cmds__MetadataDeployment__e.getSObjectType(),
+                    cmds__MetadataDeployment__e.cmds__DeploymentId__c, 
+                    cmds__MetadataDeployment__e.cmds__Result__c)
                 .enqueueUpsertRecords(
                     new List<SObject> { Record })
                 .deployId;
@@ -33,9 +33,9 @@ public with sharing class CustomMetadataDemoController {
     public PageReference saveHandler() {
 
         DeployId = null;                
-        CustomMetadata.SaveRecordResult result = 
-            (CustomMetadata.SaveRecordResult) 
-                JSON.deserialize(DeployResult, CustomMetadata.SaveRecordResult.class);
+        cmds.CustomMetadata.SaveRecordResult result = 
+            (cmds.CustomMetadata.SaveRecordResult) 
+                JSON.deserialize(DeployResult, cmds.CustomMetadata.SaveRecordResult.class);
         if(!result.success) {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.Error, result.message));            
         }            
