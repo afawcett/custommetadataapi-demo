@@ -40,7 +40,7 @@
         <aura:if isTrue="{!v.errors}">
             <ui:message title="Error" severity="error">{!v.errors}</ui:message>        
         </aura:if>
-        <p class="slds-p-horizontal--small">
+        <p class="slds-p-horizontal_small">
             <lightning:input aura:id="recordField" 
                 name="fullName" label="Developer Name" 
                 value="{!v.record.DeveloperName}" required="true"/>
@@ -54,7 +54,7 @@
                 name="email" label="Alias" 
                 value="{!v.record.Alias__c}"/>
             <lightning:button aura:id="saveButton"
-                label="Save" onclick="{!c.handleSave}" class="slds-m-top--medium"/>
+                label="Save" onclick="{!c.handleSave}" class="slds-m-top_medium"/>
         </p>
     </lightning:card>        
     	
